@@ -17,6 +17,10 @@ public class TesteArray {
 		arrayTeste.adicionarElemento("Intruso5", 2);
 		arrayTeste.adicionarElemento("Intruso6", 5);
 		System.out.println(arrayTeste.toString());
+		
+		arrayTeste.removerElemento(2);
+		arrayTeste.removerElemento("intruso6");
+		System.out.println(arrayTeste.toString());
 	}
 
 }

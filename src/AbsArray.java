@@ -74,6 +74,32 @@ public abstract class AbsArray {
 		return -1;
 	}
 	
+	//Remover um Elemento pela posicao
+	public boolean removerElemento(int posicao) {
+		if(!(posicao >= 0 && posicao < tamanhoAtual)) {
+			return false;
+		}
+		
+		for(int i = posicao; i < tamanhoAtual-1; i++) {
+			elementos[i] = elementos[i+1];
+		}
+		
+		tamanhoAtual--;
+		return true;
+	}
+	
+	//Remover pelo nome do elemento
+	public boolean removerElemento(String elemento) {
+		int pos = this.recuperarElemento(elemento);
+		
+		if(pos < 0) {
+			return false;
+		}
+		
+		this.removerElemento(pos);
+		return true;
+	}
+	
 	//Mostrar todos os elementos
 	@Override
 	public String toString() {
