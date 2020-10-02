@@ -2,8 +2,8 @@
 
 public abstract class AbsArray {
 	
-	private String[] elementos;
-	private int tamanhoAtual;
+	protected String[] elementos;
+	protected int tamanhoAtual;
 	
 	public AbsArray(int tamanho) {
 		this.elementos = new String[tamanho];
@@ -28,6 +28,9 @@ public abstract class AbsArray {
 		}
 		
 		aumentarCapacidade();
+		if(elementos.length == tamanhoAtual) {
+			return false;
+		}
 		
 		for(int i = tamanhoAtual-1; i>=posicao; i--) {
 			elementos[i+1] = elementos[i];
@@ -39,15 +42,7 @@ public abstract class AbsArray {
 		return true;
 	}
 	
-	private void aumentarCapacidade() {
-		if(tamanhoAtual == elementos.length) {
-			String[] elementosNovo = new String[elementos.length * 2];
-			for(int i = 0; i < elementos.length; i++) {
-				elementosNovo[i] = this.elementos[i];
-			}
-			elementos = elementosNovo;
-		}
-	}
+	protected abstract void aumentarCapacidade();
 	
 	//Conseguir o tamanho atual do vetor
 	public int getTamanhoAtual() {
