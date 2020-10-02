@@ -10,6 +10,7 @@ public class Array {
 		tamanhoAtual = 0;
 	}
 	
+	//Adicionar ao fim do array
 	public boolean adicionarElemento(String elemento){
 		if(tamanhoAtual < elementos.length) {
 			elementos[tamanhoAtual] = elemento;
@@ -20,6 +21,21 @@ public class Array {
 		return false;
 	}
 	
+	public boolean adicionarElemento(String elemento, int posicao) {
+		if(!(posicao >= 0 && posicao < tamanhoAtual) && tamanhoAtual < elementos.length) {
+			return false;
+		}
+		
+		for(int i = tamanhoAtual-1; i>=posicao; i--) {
+			elementos[i+1] = elementos[i];
+		}
+		
+		elementos[posicao] = elemento;
+		tamanhoAtual++;
+		
+		return true;
+	}
+	
 	//Conseguir o tamanho atual do vetor
 	public int getTamanhoAtual() {
 		return tamanhoAtual;
@@ -28,7 +44,7 @@ public class Array {
 	
 	//Recuperar um Elemento 
 	public boolean recuperarElemento(int posicao) {
-		if(!(posicao > 0 && posicao < tamanhoAtual)) {
+		if(!(posicao >= 0 && posicao < tamanhoAtual)) {
 			return false;
 		}
 		System.out.println(elementos[posicao]);
