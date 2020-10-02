@@ -20,10 +20,13 @@ public class Array {
 		return false;
 	}
 	
+	//Conseguir o tamanho atual do vetor
 	public int getTamanhoAtual() {
 		return tamanhoAtual;
 	}
 	
+	
+	//Recuperar um Elemento 
 	public boolean recuperarElemento(int posicao) {
 		if(!(posicao > 0 && posicao < tamanhoAtual)) {
 			return false;
@@ -33,6 +36,16 @@ public class Array {
 		
 	}
 	
+	public int recuperarElemento(String elemento) {
+		for(int i = 0; i < tamanhoAtual; i++) {
+			if(elementos[i].equalsIgnoreCase(elemento)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	//Mostrar todos os elementos
 	@Override
 	public String toString() {
 		StringBuilder msg = new StringBuilder();
