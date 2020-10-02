@@ -21,10 +21,13 @@ public class Array {
 		return false;
 	}
 	
+	//Adiciona qualquer posicao
 	public boolean adicionarElemento(String elemento, int posicao) {
-		if(!(posicao >= 0 && posicao < tamanhoAtual) && tamanhoAtual < elementos.length) {
+		if(!(posicao >= 0 && posicao <= tamanhoAtual)) {
 			return false;
 		}
+		
+		aumentarCapacidade();
 		
 		for(int i = tamanhoAtual-1; i>=posicao; i--) {
 			elementos[i+1] = elementos[i];
@@ -34,6 +37,16 @@ public class Array {
 		tamanhoAtual++;
 		
 		return true;
+	}
+	
+	private void aumentarCapacidade() {
+		if(tamanhoAtual == elementos.length) {
+			String[] elementosNovo = new String[elementos.length * 2];
+			for(int i = 0; i < elementos.length; i++) {
+				elementosNovo[i] = this.elementos[i];
+			}
+			elementos = elementosNovo;
+		}
 	}
 	
 	//Conseguir o tamanho atual do vetor
